@@ -4,6 +4,7 @@ declare namespace NodeJS {
     PORT?: string;
     SALT?: string;
     JWT_SECRET?: string;
+    MONGODB_URL?: string;
   }
 }
 
