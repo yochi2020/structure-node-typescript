@@ -1,6 +1,5 @@
-import { errorHandle,sendEmailWithNodeMail,IEmailData } from "@common/index";
+import { errorHandle,sendEmailWithNodeMail,IEmailData,Result } from "@common/index";
 import { NextFunction,Request, Response } from "express";
-import { Result } from "@common/index";
 import formidable from "formidable";
 import fs from "fs";
 
