@@ -72,4 +72,4 @@ userSchema.methods = {
     }
 };
 
-export const UserModel=  mongoose.model("user", userSchema);
+export const UserModel=  mongoose.model<IUserModel>("user", userSchema);

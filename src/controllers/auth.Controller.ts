@@ -32,18 +32,18 @@ export const registerWithEmailPasswordController = async (req: Request, res: Res
 
 export const loginWithEmailPasswordController = async(req: Request, res: Response,next:NextFunction) => {
     try {
-        // const { firstname,lastname,email,mobile,password,password_confirm} = req.body;
+        const { email,password} = req.body;
         
-        // const findUser = await UserModel.findOne({ email });
+        const userExists = await UserModel.findOne({ email });
+        if (!userExists) {
+            throw errorHandle("email do not exist Please sigup");
+        }
         // console.log("🚀 ~ file: auth.Controller.ts:39 ~ loginWithEmailPasswordController ~ findUser:", await findUser?.isPasswordMatched(password));
         // console.log(await new UserModel().isPasswordMatched(password));
-    
+        if (await userExists.isPasswordMatched(password)) {
+            throw errorHandle("Email and Password do not match");
+        }
        
-
-        // if (password !== password_confirm) {
-        //     throw errorHandle("Password's do not match");
-        // }
-
         // const token = jwt.sign(
         //     { email, password, username },
         //     String(process.env.JWT_ACCOUNT_ACTIVATION),
