@@ -1,7 +1,5 @@
 import { encryptPassword,checkPassword } from "@common/index";
-import mongoose,{ ObjectId} from "mongoose";
-
-
+import mongoose from "mongoose";
 
 export interface IUser {
     firstname:string
@@ -11,8 +9,6 @@ export interface IUser {
     password: string
     role:string
 }
-
-
 export interface IUserModel extends IUser, Document{
     isPasswordMatched:(password:string)=>Promise<any>
 }
