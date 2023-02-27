@@ -4,7 +4,7 @@ import formidable from "formidable";
 import fs from "fs";
 
 export const demoOneController = (req: Request, res: Response) => {    
-    res.send("sss");
+    Result(res,"");
 };
 
 export const uploadMulterController = (req: Request, res: Response,next:NextFunction) => {
