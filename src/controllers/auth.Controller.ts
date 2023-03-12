@@ -1,5 +1,5 @@
 import { Request, Response,NextFunction } from "express";
-import { Result,errorHandle } from "@common/index";
+import { Result,errorHandle,generateAccessToken,generateRefreshToken } from "@common/index";
 import { UserModel } from "@models/index";
 export const registerWithEmailPasswordController = async (req: Request, res: Response,next:NextFunction) => {
     try {
@@ -17,13 +17,6 @@ export const registerWithEmailPasswordController = async (req: Request, res: Res
             throw errorHandle("Password's do not match");
         }
         const newUser = await UserModel.create(req.body);
-        // const token = jwt.sign(
-        //     { email, password, username },
-        //     String(process.env.JWT_ACCOUNT_ACTIVATION),
-        //     { expiresIn: "10m" },
-        // );
-
-
         Result(res,newUser);
     } catch (error) {
         next(error);
@@ -38,20 +31,19 @@ export const loginWithEmailPasswordController = async(req: Request, res: Respons
         if (!userExists) {
             throw errorHandle("email do not exist Please sigup");
         }
-        // console.log("🚀 ~ file: auth.Controller.ts:39 ~ loginWithEmailPasswordController ~ findUser:", await findUser?.isPasswordMatched(password));
-        // console.log(await new UserModel().isPasswordMatched(password));
-        if (await userExists.isPasswordMatched(password)) {
+
+        if (!await userExists.isPasswordMatched(password)) {
             throw errorHandle("Email and Password do not match");
         }
-       
-        // const token = jwt.sign(
-        //     { email, password, username },
-        //     String(process.env.JWT_ACCOUNT_ACTIVATION),
-        //     { expiresIn: "10m" },
-        // );
+        
+        const token = await generateAccessToken(userExists?.id);
+        
+        const refreshToken = await generateRefreshToken(userExists?.id);
 
-
-        Result(res,req.body);
+        Result(res, {
+            token,
+            refreshToken
+        });
     } catch (error) {
         next(error);
     }
