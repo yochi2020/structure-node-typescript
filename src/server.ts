@@ -10,7 +10,7 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL,
     credentials: true       //cliend can use automate cookie
 }));
 app.use(express.json({ limit: "50mb" }));
