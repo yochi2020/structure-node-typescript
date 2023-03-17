@@ -1,4 +1,14 @@
-import mongoose from 'mongoose';
+import { encryptPassword,checkPassword } from "@common/index";
+import mongoose from "mongoose";
+export interface IUser extends Document{
+    username: string
+    password: string
+    descryptPassword(password:string):Promise<boolean>
+}
+
+// export interface IUserModel extends IUser, Document{ 
+    
+// }
 
 const userSchema = new mongoose.Schema ({
     username: {
@@ -8,6 +18,20 @@ const userSchema = new mongoose.Schema ({
     password: {
         type:String
     }
-},{ timestamps: true });
+}, { timestamps: true });
 
-export default mongoose.model('user',userSchema);
+userSchema.pre("save", async function (next) {
+    if (this.isModified("password")) {
+        this.password =await encryptPassword(this.password as string);
+    }
+    next();
+});
+
+userSchema.methods = {
+    descryptPassword:async function (password:string) {
+        if (!password) return "";
+        return  checkPassword(password,this.password);
+    },
+};
+
+export default mongoose.model<IUser>("user",userSchema);
