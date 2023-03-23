@@ -3,7 +3,7 @@ import { NextFunction,Request, Response } from "express";
 import formidable from "formidable";
 import fs from "fs";
 
-export const demoOneController = (req: Request, res: Response) => {    
+export const demoOneController = (req: Request, res: Response) => {
     Result(res,"");
 };
 
@@ -34,7 +34,7 @@ export const uploadFormidableController = (req: Request, res: Response,next:Next
             }
             Result(res,fs.readFileSync(files.file.filepath),200,"image/jpeg");
         });
-        
+
     } catch (error) {
         next(error);
     }
