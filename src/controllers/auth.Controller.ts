@@ -1,14 +1,14 @@
-import { Request, Response,NextFunction } from "express";
-import { Result,errorHandle,generateAccessToken,generateRefreshToken } from "@common/index";
+import { Request, Response, NextFunction } from "express";
+import { Result, errorHandle, generateAccessToken, generateRefreshToken } from "@common/index";
 import { UserModel } from "@models/index";
-export const registerWithEmailPasswordController = async (req: Request, res: Response,next:NextFunction) => {
+export const registerWithEmailPasswordController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        
-        const { firstname,email,password,password_confirm} = req.body;
+
+        const { firstname, email, password, password_confirm } = req.body;
         const userExists = await UserModel.findOne({
-            $or: [{ email: email }, { firstname:firstname }],
+            $or: [{ email: email }, { firstname: firstname }],
         });
-    
+
         if (userExists) {
             throw errorHandle("username with the same email already exist");
         }
@@ -17,16 +17,16 @@ export const registerWithEmailPasswordController = async (req: Request, res: Res
             throw errorHandle("Password's do not match");
         }
         const newUser = await UserModel.create(req.body);
-        Result(res,newUser);
+        Result(res, newUser);
     } catch (error) {
         next(error);
     }
 };
 
-export const loginWithEmailPasswordController = async(req: Request, res: Response,next:NextFunction) => {
+export const loginWithEmailPasswordController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { email,password} = req.body;
-        
+        const { email, password } = req.body;
+
         const userExists = await UserModel.findOne({ email });
         if (!userExists) {
             throw errorHandle("email do not exist Please sigup");
@@ -35,9 +35,9 @@ export const loginWithEmailPasswordController = async(req: Request, res: Respons
         if (!await userExists.isPasswordMatched(password)) {
             throw errorHandle("Email and Password do not match");
         }
-        
+
         const token = await generateAccessToken(userExists?.id);
-        
+
         const refreshToken = await generateRefreshToken(userExists?.id);
 
         Result(res, {

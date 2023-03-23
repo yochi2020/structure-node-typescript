@@ -13,7 +13,7 @@ export interface IUserModel extends IUser, Document{
     isPasswordMatched:(password:string)=>Promise<any>
 }
 
-const userSchema = new mongoose.Schema ({
+const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
         reqired: true,
