@@ -35,13 +35,13 @@ wss.on("connection", (connection: any, req) => {
             if (token) {
                 jwt.verify(
                     token,
-          process.env.JWT_ACCESS_SECRET as string,
-          (err, userData) => {
-              if (err) throw err;
-              const { userId, username }: any = userData;
-              connection.userId = userId;
-              connection.username = username;
-          },
+                    process.env.JWT_ACCESS_SECRET as string,
+                    (err, userData) => {
+                        if (err) throw err;
+                        const { userId, username }: any = userData;
+                        connection.userId = userId;
+                        connection.username = username;
+                    },
                 );
             }
         }
@@ -50,13 +50,13 @@ wss.on("connection", (connection: any, req) => {
     function notifyAboutOnlinePeople() {
         [...wss.clients].forEach(client => {
             client.send(JSON.stringify({
-                online: [...wss.clients].map(c => ({userId:c.userId,username:c.username})),
+                online: [...wss.clients].map(c => ({ userId: c.userId, username: c.username })),
             }));
         });
     }
-    
+
     connection.isAlive = true;
-    
+
     connection.timer = setInterval(() => {
         connection.ping();
         connection.deathTimer = setTimeout(() => {
@@ -67,11 +67,11 @@ wss.on("connection", (connection: any, req) => {
             console.log("dead");
         }, 1000);
     }, 5000);
-    
+
     connection.on("pong", () => {
         clearTimeout(connection.deathTimer);
     });
-    
+
 
     connection.on("message", async (message: any) => {
         const messageData: any = JSON.parse(message.toString());
@@ -86,7 +86,7 @@ wss.on("connection", (connection: any, req) => {
                 text,
             })
 
-      ;[...wss.clients]
+                ;[...wss.clients]
                 .filter((c: any) => c.userId === recipient)
                 .forEach((c: any) =>
                     c.send(

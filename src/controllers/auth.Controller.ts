@@ -20,7 +20,7 @@ const getUserDataFromRquest = (req:Request) => {
 export const registerWithEmailPasswordController =async (req: Request, res: Response,next:NextFunction) => {
     try {
         const { username, password } = req.body;
-        const createUser =await UserModel.create({username,password});
+        const createUser =await UserModel.create({ username,password });
         jwt.sign({ userId: createUser._id }, String(process.env.JWT_ACCESS_SECRET), (err:any, token:any) => {
             if(err) throw err;
             return res.cookie("token", token).status(201).json({
@@ -34,13 +34,13 @@ export const registerWithEmailPasswordController =async (req: Request, res: Resp
 
 export const loginWithEmailPasswordController = async (req: Request, res: Response,next:NextFunction) => {
     try {
-        const {username,password} = req.body;
+        const { username,password } = req.body;
         const userExists = await UserModel.findOne({ username });
-        
+
         if (!userExists) {
             throw errorHandle("email do not exist Please sigup");
         }
-      
+
 
         // res.cookie("tokenChi", "eieiei", {
         //     httpOnly: true,
@@ -71,11 +71,11 @@ export const logoutController = (req: Request, res: Response,next:NextFunction) 
 
 export const profileController = (req: Request, res: Response,next:NextFunction) => {
     try {
-        const {token} = req.cookies;
+        const { token } = req.cookies;
         if (token) {
             jwt.verify(token, process.env.JWT_ACCESS_SECRET as string, (err:any, userData:any) => {
                 if (err) throw err;
-                
+
                 res.json(userData);
             });
         } else {
@@ -90,12 +90,12 @@ export const messagesController =async (req: Request, res: Response,next:NextFun
     try {
         const { userId } = req.params;
         const userData:any =await getUserDataFromRquest(req);
-        
+
         const ourUserId = userData.userId;
         const message = await messageModel.find({
             sender: { $in: [userId, ourUserId] },
-            recipient:{$in:[userId,ourUserId]}
-        }).sort({createAt:1});
+            recipient:{ $in:[userId,ourUserId] }
+        }).sort({ createAt:1 });
 
         Result(res,message);
 
@@ -106,7 +106,7 @@ export const messagesController =async (req: Request, res: Response,next:NextFun
 
 export const peopleController =async (req: Request, res: Response,next:NextFunction) => {
     try {
-        const users = await UserModel.find({},{"_id":1,username:1});
+        const users = await UserModel.find({},{ "_id":1,username:1 });
 
         Result(res,users);
     } catch (error) {

@@ -6,11 +6,11 @@ export interface IUser extends Document{
     descryptPassword(password:string):Promise<boolean>
 }
 
-// export interface IUserModel extends IUser, Document{ 
-    
+// export interface IUserModel extends IUser, Document{
+
 // }
 
-const userSchema = new mongoose.Schema ({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique:true
