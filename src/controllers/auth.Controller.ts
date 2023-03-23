@@ -1,5 +1,5 @@
 import { Request, Response,NextFunction } from "express";
-import { Result} from "@common/index";
+import { Result } from "@common/index";
 export const registerWithEmailPasswordController = (req: Request, res: Response,next:NextFunction) => {
     try {
         Result(res,"");

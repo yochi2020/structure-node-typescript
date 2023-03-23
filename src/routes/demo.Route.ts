@@ -1,6 +1,6 @@
 import express from "express";
 import * as demoController from "@src/controllers/demo.Controller";
-import { upLoadImages } from "@middleware/index"; 
+import { upLoadImages } from "@middleware/index";
 const router = express.Router();
 
 router.get("/test1", demoController.demoOneController);
