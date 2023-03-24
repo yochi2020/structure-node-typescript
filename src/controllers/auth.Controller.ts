@@ -1,4 +1,5 @@
 import { Request, Response,NextFunction } from "express";
+<<<<<<< HEAD
 import { errorHandle, Result } from "@common/index";
 import UserModel from "@models/user.Model";
 import messageModel from "@src/models/message.Model";
@@ -18,6 +19,10 @@ const getUserDataFromRquest = (req:Request) => {
     });
 };
 export const registerWithEmailPasswordController =async (req: Request, res: Response,next:NextFunction) => {
+=======
+import { Result } from "@common/index";
+export const registerWithEmailPasswordController = (req: Request, res: Response,next:NextFunction) => {
+>>>>>>> main
     try {
         const { username, password } = req.body;
         const createUser =await UserModel.create({ username,password });
