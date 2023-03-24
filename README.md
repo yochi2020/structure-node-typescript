@@ -1,5 +1,4 @@
 # structure-node-typescript
-structure-node-typescript
 
 ## Getting Started
 npm run dev
