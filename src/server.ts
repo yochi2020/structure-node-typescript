@@ -9,13 +9,20 @@ import { errorMiddleware } from "@middleware/index";
 const app = express();
 
 app.use(morgan("dev"));
+
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieSession());
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: ["http://localhost:5173"],
     credentials: true       //cliend can use automate cookie
 }));
+<<<<<<< HEAD
+=======
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended:false }));
 app.use(cookieSession());
+>>>>>>> main
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api", baseRoute);

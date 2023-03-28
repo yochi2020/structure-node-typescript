@@ -9,6 +9,7 @@ declare namespace NodeJS {
     JWT_RESET_PASSWORD?: string;
     JWT_ACCOUNT_ACTIVATION?: string;
     EMAIL_FROM?: string;
+    MONGODB_URL?: string;
   }
 }
 
