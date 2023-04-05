@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc && NODE_ENV=production ts-node-dev -r tsconfig-paths/register ./dist/index.js ",
+    "start": "npx tsc && NODE_ENV=production ts-node -r tsconfig-paths/register ./dist/index.js ",
     "dev": "NODE_ENV=development nodemon",
     "lint:check": "npx eslint .",
     "lint:format": "npx eslint . --fix",
