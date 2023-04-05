@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx tsc && NODE_ENV=production ts-node-dev -r tsconfig-paths/register ./dist/index.js ",
-    "dev": "NODE_ENV=development ts-node-dev -r tsconfig-paths/register ./src/index",
+    "dev": "NODE_ENV=development nodemon",
     "lint:check": "npx eslint .",
     "lint:format": "npx eslint . --fix",
     "version:check": "yarn outdated",
@@ -25,10 +25,12 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/morgan": "^1.9.4",
     "@types/multer": "^1.4.7",
+    "@types/node": "^18.15.11",
     "@types/nodemailer": "^6.4.7",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
+    "nodemon": "^2.0.22",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.4"

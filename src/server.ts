@@ -6,9 +6,15 @@ import cookieSession from "cookie-parser";
 import baseRoute from "@routes/index";
 import { errorHandle } from "@common/index";
 import { errorMiddleware } from "@middleware/index";
+import dotenv from "dotenv";
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
+
 const app = express();
 
-app.use(morgan("dev"));
+if(process.env.NODE_ENV==="development"){
+    app.use(morgan("dev"));
+}
 app.use(cors({
     origin: process.env.CLIENT_URL,
     credentials: true       //cliend can use automate cookie
