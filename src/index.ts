@@ -1,7 +1,32 @@
-import dotenv from "dotenv";
 import app from "./server";
 import mongoose from "mongoose";
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+import fs from "fs";
+import path from "path";
+const watchAndUpdateIndex = (targetFolder:string[])=>{
+    targetFolder.forEach(data => {
+        const folderPaths = path.join(__dirname, `./${data}`);
+
+        // watch in folder
+        fs.watch(folderPaths, (eventType) => {
+            const fileInFolder = fs.readdirSync(folderPaths);
+            if (eventType === "rename") {
+                const model:any =[];
+                fileInFolder.forEach((file:string)=>{
+                    if(file==="index.ts"){
+                        return;
+                    }
+                    const modelFile = file.split(".ts")[0];
+                    const changeName = `export * from "./${modelFile}";\n`;
+                    model.push(changeName);
+                });
+                // write file in folder  asynchronous
+                fs.writeFileSync(__dirname+"/"+data+"/index.ts", model.join(""),{ flag: "w" });
+            }
+        });
+    });
+};
+
+watchAndUpdateIndex(["common"]);
 
 app.listen(process.env.PORT,async () => {
     mongoose.set("strictQuery", false);
