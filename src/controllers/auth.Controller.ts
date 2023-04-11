@@ -1,8 +1,8 @@
 import { Request, Response,NextFunction } from "express";
-import { Result, errorHandle } from "@common/index";
+import { Result, errorHandle,encryptPassword,checkPassword } from "@utils/index";
 import { Users } from "@entity/index";
 import { getManager } from "typeorm";
-import { encryptPassword,checkPassword } from "@common/index";
+
 export const registerWithEmailPasswordController = async (req: Request, res: Response,next:NextFunction) => {
     try {
         const body = req.body;

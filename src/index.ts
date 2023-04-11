@@ -28,10 +28,10 @@ const watchAndUpdateIndex = (targetFolder:string[])=>{
 };
 
 createConnection().then(()=>{
-    app.listen(process.env.PORT, async() => {
+    app.listen(process.env.PORT, async () => {
         // eslint-disable-next-line no-console
         console.log(`server is runing on port ${process.env.PORT}`);
-        watchAndUpdateIndex(["common"]);
+        watchAndUpdateIndex(["utils"]);
     });
 // eslint-disable-next-line no-console
 }).catch(err=>console.log(err));

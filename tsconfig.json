@@ -1,47 +1,24 @@
 {
   "ts-node": {
-    "require": [
-      "tsconfig-paths/register"
-    ]
+    "require": ["tsconfig-paths/register"]
   },
   "compilerOptions": {
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "module": "commonjs" /* Specify what module code is generated. */,
     "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
-    "typeRoots": [
-      "src/@type",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["src/@type", "./node_modules/@types"],
     "rootDir": "src" /* Specify the root folder within your source files. */,
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
-      "@src/*": [
-        "./src/*"
-      ],
-      "@common/*": [
-        "src/common/*"
-      ],
-      "@controllers/*": [
-        "src/controllers/*"
-      ],
-      "@entity/*": [
-        "src/entity/*"
-      ],
-      "@interface/*": [
-        "src/interface/*"
-      ],
-      "@middleware/*": [
-        "src/middleware/*"
-      ],
-      "@models/*": [
-        "src/models/*"
-      ],
-      "@routes/*": [
-        "src/routes/*"
-      ],
-      "@validator/*": [
-        "src/validator/*"
-      ]
+      "@src/*": ["./src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@entity/*": ["src/entity/*"],
+      "@interface/*": ["src/interface/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"],
+      "@validator/*": ["src/validator/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     "outDir": "dist" /* Specify an output folder for all emitted files. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
@@ -52,11 +29,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
