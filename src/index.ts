@@ -25,7 +25,7 @@ const watchAndUpdateIndex = (targetFolder:string[])=>{
     });
 };
 
-watchAndUpdateIndex(["common"]);
+watchAndUpdateIndex(["utils"]);
 
 app.listen(process.env.PORT, () => {
     // eslint-disable-next-line no-console

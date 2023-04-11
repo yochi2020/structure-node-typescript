@@ -1,4 +1,4 @@
-import { errorHandle } from "@common/index";
+import { errorHandle } from "@src/utils/index";
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
