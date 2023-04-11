@@ -26,7 +26,7 @@ const watchAndUpdateIndex = (targetFolder:string[])=>{
     });
 };
 
-watchAndUpdateIndex(["common"]);
+watchAndUpdateIndex(["utils"]);
 
 app.listen(process.env.PORT,async () => {
     mongoose.set("strictQuery", false);
