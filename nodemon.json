@@ -2,9 +2,7 @@
     "watch": ["src/**/*.ts"],
     "ignore": ["src/**/*.spec.ts",".git","node_modules/","dist/"],
     "exec": "ts-node src/index",
-    "ext": "ts json",
-    "events": {
-      "start": "clear"
-    }
+    "ext": "ts json"
+
   }
  

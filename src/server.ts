@@ -9,7 +9,6 @@ import { errorMiddleware } from "@middleware/index";
 import dotenv from "dotenv";
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-
 const app = express();
 
 if(process.env.NODE_ENV==="development"){

@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-module.exports={
+module.exports = {
     "env": {
         "browser": true,
         "es2021": true
@@ -43,7 +43,12 @@ module.exports={
         "no-unused-vars": "error", //ตรวจสอบว่ามีตัวแปรที่ประกาศไว้แต่ไม่ถูกใช้หรือไม่
         "func-call-spacing": ["error", "never"], //ห้ามมีช่องว่างหน้าและหลัง () ในการเรียกฟังก์ชัน
         "eqeqeq": "error", //ต้องใช้ operator === แทน == และ !== แทน !=
-        "object-curly-spacing":["error","always"]
+        "object-curly-spacing": ["error", "always"],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "always",
+            "asyncArrow": "always"
+        }]
     },
     "ignorePatterns": ["dist"]
 };
