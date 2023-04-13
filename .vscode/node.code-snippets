@@ -1,0 +1,97 @@
+{
+  // Place your node-structure workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "function controller in node": {
+    "prefix": "fncin",
+    "body": [
+      "export const $1 = async(req: Request, res: Response,next:NextFunction) =>{",
+      "try{",
+      "",
+      "Result(res,'')",
+      "}",
+      "catch (error){",
+      " next(error)",
+      "}",
+      "}"
+    ],
+    "description": "function controller in node"
+  },
+  "routes": {
+    "prefix": "routes",
+    "body": [
+      "import express from 'express';",
+      " import * as $1Controller from '@controllers/$1.Controller';",
+      "const router = express.Router();",
+      "",
+      "router.get('/',$1Controller.get$2Controller);",
+      "router.post('/',$1Controller.create$2Controller);",
+      "router.put('/:id',$1Controller.update$2Controller);",
+      "router.delete('/:id',$1Controller.delete$2Controller);",
+      "",
+      "export default router;"
+    ],
+    "description": "routes"
+  },
+  "controller": {
+    "prefix": "controller",
+    "body": [
+      "import { Request, Response,NextFunction } from 'express';",
+      "import { Result } from '@utils/index';",
+      "",
+      " export const get$1Controller = async (req: Request, res: Response,next:NextFunction) =>{",
+      "    try{",
+      "",
+      "       Result(res,'');",
+      "   }",
+      "   catch (error){",
+      "        next(error);",
+      "   }",
+      "};",
+      "",
+      " export const create$1Controller = async (req: Request, res: Response,next:NextFunction) =>{",
+      "    try{",
+      "",
+      "       Result(res,'');",
+      "   }",
+      "   catch (error){",
+      "        next(error);",
+      "   }",
+      "};",
+      "",
+      " export const update$1Controller = async (req: Request, res: Response,next:NextFunction) =>{",
+      "    try{",
+      "",
+      "       Result(res,'');",
+      "   }",
+      "   catch (error){",
+      "        next(error);",
+      "   }",
+      "};",
+      "",
+      " export const delete$1Controller = async (req: Request, res: Response,next:NextFunction) =>{",
+      "    try{",
+      "",
+      "       Result(res,'');",
+      "   }",
+      "   catch (error){",
+      "        next(error);",
+      "   }",
+      "};"
+    ],
+    "description": "controller"
+  }
+}

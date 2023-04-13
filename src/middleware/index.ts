@@ -1,3 +1,3 @@
-export * from "./errorMiddleware";
-export * from "./uploadMulter";
-export * from "./authMiddleware";
+export * from "./auth.Middleware";
+export * from "./error.Middleware";
+export * from "./uploadMulter.Middleware";

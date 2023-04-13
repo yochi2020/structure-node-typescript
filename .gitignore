@@ -1,6 +1,6 @@
 node_modules
 package-lock.json
-.env.development
-.env.production
+env.development
+env.production
 dist
 .DS_Store
