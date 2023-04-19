@@ -8,8 +8,8 @@ const router = express.Router();
 
 router.use("/demo", demoRoute);
 router.use("/auth", authRoute);
-router.use("/users",userRoute);
-router.use("/permissions",permisstionRoute);
-router.use("/role",role);
+router.use("/users", userRoute);
+router.use("/permissions", permisstionRoute);
+router.use("/role", role);
 
 export default router;

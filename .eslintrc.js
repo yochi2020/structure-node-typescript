@@ -48,7 +48,8 @@ module.exports = {
             "anonymous": "always",
             "named": "always",
             "asyncArrow": "always"
-        }]
+        }],
+        "operator-linebreak": ["error", "before"]
     },
     "ignorePatterns": ["dist"]
 };

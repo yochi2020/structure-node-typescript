@@ -3,11 +3,11 @@ import { NextFunction, Request, Response } from "express";
 import formidable from "formidable";
 import fs from "fs";
 
-export const demoOneController = (req: Request, res: Response) => {
+export const demoOneController=(req: Request, res: Response) => {
     Result(res, "");
 };
 
-export const uploadMulterController = (req: Request, res: Response, next: NextFunction) => {
+export const uploadMulterController=(req: Request, res: Response, next: NextFunction) => {
     try {
         // if(!req.files) throw errorHandle("image are required");
         // // let images;
