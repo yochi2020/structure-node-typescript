@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import app from "./server";
 import { createConnection } from "typeorm";
-const watchAndUpdateIndex = (targetFolder:string[])=>{
+const watchAndUpdateIndex = (targetFolder:string[]) => {
     targetFolder.forEach(data => {
         const folderPaths = path.join(__dirname, `./${data}`);
 
@@ -12,7 +12,7 @@ const watchAndUpdateIndex = (targetFolder:string[])=>{
             const fileInFolder = fs.readdirSync(folderPaths);
             if (eventType === "rename") {
                 const model:any =[];
-                fileInFolder.forEach((file:string)=>{
+                fileInFolder.forEach((file:string) => {
                     if(file==="index.ts"){
                         return;
                     }
@@ -27,12 +27,12 @@ const watchAndUpdateIndex = (targetFolder:string[])=>{
     });
 };
 
-createConnection().then(()=>{
+createConnection().then(() => {
     app.listen(process.env.PORT, async () => {
         // eslint-disable-next-line no-console
         console.log(`server is runing on port ${process.env.PORT}`);
         watchAndUpdateIndex(["utils","controllers","entity","utils","middleware"]);
     });
 // eslint-disable-next-line no-console
-}).catch(err=>console.log(err));
+}).catch(err => console.log(err));
 

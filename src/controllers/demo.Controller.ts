@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import formidable from "formidable";
 import fs from "fs";
 
-export const demoOneController=(req: Request, res: Response) => {
+export const demoOneController=async (req:Request,res:Response)=>{
     Result(res, "");
 };
 

@@ -10,12 +10,15 @@
     "lint:format": "npx eslint . --fix",
     "version:check": "yarn outdated",
     "version:update": "yarn upgrade",
+    "roles:seed":"ts-node src/seeder/role.seeder.ts",
+    "products:seed":"ts-node ./src/seeder/product.seeder.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/cookie-session": "^2.0.44",

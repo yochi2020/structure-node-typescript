@@ -4,13 +4,13 @@ import { getRepository } from "typeorm";
 import { Users } from "@entity/index";
 
 
-export const usersController = async (req: Request, res: Response,next:NextFunction) =>{
+export const usersController=async (req: Request, res: Response,next:NextFunction) => {
     try{
         const repository = getRepository(Users);
         const users = await repository.find({
             relations:["role"]
         });
-        Result(res,users.map(d=>{
+        Result(res,users.map(d => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
             const { password,...data } = d;
             return data;
@@ -21,7 +21,7 @@ export const usersController = async (req: Request, res: Response,next:NextFunct
     }
 };
 
-export const createUserController = async (req: Request, res: Response,next:NextFunction) =>{
+export const createUserController = async (req: Request, res: Response,next:NextFunction) => {
     try{
         // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
         const { role_id,...body } = req.body;
@@ -42,7 +42,7 @@ export const createUserController = async (req: Request, res: Response,next:Next
     }
 };
 
-export const getUserController = async (req: Request, res: Response,next:NextFunction) =>{
+export const getUserController = async (req: Request, res: Response,next:NextFunction) => {
     try{
         const repository = getRepository(Users);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
@@ -54,7 +54,7 @@ export const getUserController = async (req: Request, res: Response,next:NextFun
     }
 };
 
-export const updateUserController = async (req: Request, res: Response,next:NextFunction) =>{
+export const updateUserController = async (req: Request, res: Response,next:NextFunction) => {
     try{
         // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
         const { role_id,...body } = req.body;
@@ -70,7 +70,7 @@ export const updateUserController = async (req: Request, res: Response,next:Next
     }
 };
 
-export const deleteUserControloler = async (req: Request, res: Response,next:NextFunction) =>{
+export const deleteUserControloler = async (req: Request, res: Response,next:NextFunction) => {
     try{
         const repository = getRepository(Users);
         await repository.delete(req.params.id);

@@ -22,7 +22,7 @@ export const createRoleController = async (req: Request, res: Response,next:Next
             name,
             permissions:permissions.map(id=>({ id })),
         });
-        Result(res,role);
+        Result(res,role,201);
     }
     catch (error){
         next(error);
@@ -31,12 +31,16 @@ export const createRoleController = async (req: Request, res: Response,next:Next
 
 export const updateRoleController = async (req: Request, res: Response,next:NextFunction) =>{
     try{
+        const { name,permissions } = req.body;
         const repository = getRepository(Role);
 
-        // const role = await repository.save({
-        //     id:parseInt()
-        // });
-        Result(res,"");
+        const role = await repository.save({
+            id:parseInt(req.params.id),
+            name:name,
+            permissions:permissions.map(id=>({ id }))
+        });
+
+        Result(res,role,202);
     }
     catch (error){
         next(error);
@@ -45,8 +49,8 @@ export const updateRoleController = async (req: Request, res: Response,next:Next
 
 export const deleteRoleController = async (req: Request, res: Response,next:NextFunction) =>{
     try{
-
-        Result(res,"");
+        const repository = getRepository(Role);
+        Result(res, await repository.delete(req.params.id),204);
     }
     catch (error){
         next(error);
