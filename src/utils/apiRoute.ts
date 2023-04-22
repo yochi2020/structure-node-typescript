@@ -1,0 +1,29 @@
+export const apiRoute = {
+    auth:{
+        registerWithEmailPassword:"/auth/register-with-email-password",
+        loginWithEmailPassword:"/auth/login-with-email-password",
+        logout:"/auth/logout",
+        user:"/auth/user",
+        userInfo:"/auth/user/info",
+        userPassword:"/auth/user/password"
+    },
+    users:{
+        getAllUser:"/users",
+        getUser:"/users/:id",
+        saveUser:"/users",
+        updateUser:"/users/:id",
+        deleteUser:"/users/:id"
+    },
+    permissions:{
+        getPermissions:"/permissions"
+    },
+    role:{
+        getRole:"/role/:id",
+        saveRole:"/role",
+        updateRole:"/role/:id",
+        deleteRole:"/role/:id"
+    },
+    upload:{
+        saveUpload:"/upload"
+    },
+};

@@ -4,7 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieSession from "cookie-parser";
 import baseRoute from "@routes/index";
-import { errorHandle } from "@src/utils/index";
+import { errorHandle } from "@utils/index";
 import { errorMiddleware } from "@middleware/index";
 import dotenv from "dotenv";
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });

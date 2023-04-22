@@ -31,7 +31,7 @@ createConnection().then(() => {
     app.listen(process.env.PORT, async () => {
         // eslint-disable-next-line no-console
         console.log(`server is runing on port ${process.env.PORT}`);
-        watchAndUpdateIndex(["utils","controllers","entity","utils","middleware"]);
+        watchAndUpdateIndex(["utils","controllers","entity","middleware"]);
     });
 // eslint-disable-next-line no-console
 }).catch(err => console.log(err));

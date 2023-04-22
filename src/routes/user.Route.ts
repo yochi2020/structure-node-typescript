@@ -1,11 +1,13 @@
 import express from "express";
 import * as userController from "@src/controllers/user.Controller";
+import { apiRoute } from "@utils/index";
+
 const router = express.Router();
 
-router.get("/", userController.usersController);
-router.get("/:id",userController.getUserController);
-router.post("/",userController.createUserController);
-router.put("/:id",userController.updateUserController);
-router.delete("/:id",userController.deleteUserControloler);
+router.get(apiRoute.users.getAllUser, userController.usersController);
+router.get(apiRoute.users.getUser,userController.getUserController);
+router.post(apiRoute.users.saveUser,userController.createUserController);
+router.put(apiRoute.users.updateUser,userController.updateUserController);
+router.delete(apiRoute.users.deleteUser,userController.deleteUserControloler);
 
 export default router;
