@@ -4,7 +4,7 @@ import { Permission, Role } from "@entity/index";
 createConnection().then(async ()=>{
     const permissionRepository = getRepository(Permission);
 
-    const parms= ["view_users","edit_users","view_roles","edit_role","view_products","edit_products","view_orders","edit_orders"];
+    const parms= ["view_users","edit_users","view_roles","edit_roles","view_products","edit_products","view_orders","edit_orders"];
 
     const permissions:any=[];
 

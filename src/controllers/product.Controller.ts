@@ -5,10 +5,23 @@ import { Result } from "@utils/index";
 
 export const getProductsController=async (req: Request, res: Response,next:NextFunction) =>{
     try{
+        const take = 5;
+        const page = parseInt(req.query.page as string || "1");
+        console.log("🚀 ~ file: product.Controller.ts:10 ~ getProductsController ~ page:", page);
         const repository = getRepository(Product);
+        const [data,total] = await repository.findAndCount({
+            take:take,
+            skip:(page-1)*take
+        });
 
-        const products = await repository.find();
-        Result(res,products);
+        Result(res,{
+            data,
+            meta:{
+                total,
+                page,
+                lastPage:Math.ceil(total/take)
+            }
+        });
     }
     catch (error){
         next(error);

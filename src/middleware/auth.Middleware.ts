@@ -5,8 +5,6 @@ import { getManager } from "typeorm";
 
 export const authMiddleware = async (req:Request,res:Response,next:NextFunction) => {
     try {
-
-
         const { jwt } = req.cookies;
 
         if(!jwt){
@@ -20,7 +18,7 @@ export const authMiddleware = async (req:Request,res:Response,next:NextFunction)
 
         const repository = getManager().getRepository(Users);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-        const { password, ...user } = await repository.findOneBy({ id:payload._id }) as Users;
+        const { password, ...user } = await repository.findOne({ where:{ id:payload._id },relations:["role","role.permissions"] }) as Users;
 
         req.user=user;
         // const token = req.headers.authorization?.split(" ")[1];

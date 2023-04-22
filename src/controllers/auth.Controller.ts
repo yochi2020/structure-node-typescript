@@ -11,8 +11,8 @@ export const registerWithEmailPasswordController = async (req: Request, res: Res
         // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
         const { password, ...user } = await repository.save({
             email:body.email,
-            first_name:body.first_name,
-            last_name:body.last_name,
+            firstName:body.first_name,
+            lastName:body.last_name,
             password:await hashPassword(body.password),
             role:{ id:body.role_id }
         });

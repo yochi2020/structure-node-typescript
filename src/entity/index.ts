@@ -1,3 +1,4 @@
+export * from "./order.Entity";
 export * from "./permission.Entity";
 export * from "./product.Entity";
 export * from "./role.Entity";

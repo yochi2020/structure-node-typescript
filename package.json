@@ -12,6 +12,7 @@
     "version:update": "yarn upgrade",
     "roles:seed":"ts-node src/seeder/role.seeder.ts",
     "products:seed":"ts-node ./src/seeder/product.seeder.ts",
+    "order:seed":"ts-node ./src/seeder/order.seeder.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
