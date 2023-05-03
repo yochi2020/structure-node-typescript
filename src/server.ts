@@ -17,7 +17,7 @@ if(process.env.NODE_ENV==="development"){
 }
 app.use(cors({
     origin: process.env.CLIENT_URL,
-    credentials: true       //cliend can use automate cookie
+    credentials: true       //client can use automate cookie
 }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
